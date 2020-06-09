@@ -26,14 +26,13 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 #
 # - username: docker
 # - password: docker
-RUN useradd --create-home --shell /bin/bash \
-      --password $(openssl passwd -1 docker) docker
+RUN useradd --create-home --shell /bin/bash --password $(openssl passwd -1 docker) docker
 
 # Add sudo permission.
 RUN echo 'docker ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # Setting ssh public key.
-RUN wget https://raw.githubusercontent.com/chusiang/ansible-jupyter.dockerfile/master/files/ssh/id_rsa.pub \
+RUN wget https://raw.githubusercontent.com/KyleChou/ansible-managed-node.dockerfile/master/files/ssh/id_rsa.pub \
       -O /tmp/authorized_keys && \
       mkdir /home/docker/.ssh && \
       mv /tmp/authorized_keys /home/docker/.ssh/ && \
