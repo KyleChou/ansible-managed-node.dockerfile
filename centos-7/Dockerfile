@@ -1,7 +1,5 @@
 FROM centos:7
 
-MAINTAINER Chu-Siang Lai <chusiang@drx.tw>
-
 # Update the index of available packages.
 RUN yum update -y
 
